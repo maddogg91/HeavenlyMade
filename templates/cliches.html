@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>Ministering Through Cliches Series</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="home.css">
+
+<link rel="stylesheet" type="text/css" href="simple.css">
+<link rel="stylesheet" type="text/css" href="ebook.css">
+</head>
+<body>
+<div class="about-section">
+  <h2>Ministering Through Cliches Series</h2>
+ 
+</div>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="images/mt1.jpg" alt="Ministering Through Cliches Volume 1" style="width:100%">
+      <div class="container">
+        <h2>Volume 1</h2>
+        <p class="title">Sybil Young</p>
+        <p>Ministering Through Cliches Volume 1.</p>
+        <button class="button" onclick="previewBook(this, 1)">Preview</button>
+      </div>
+    </div>
+  </div>
+<div class="column">
+<div class="form-popup" id="myForm">
+<div class="xcontainer">
+  <div class="info">
+    Hover to preview selected book
+  </div>
+  <div class="mobile-layout">
+    <div class="notification-header">
+      <div class="necessities">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full"></i>
+      </div>
+    </div>
+    
+    <div class="book-cover">
+        <img class="book-top" src="/images/mt1.jpg" alt="book-top" />
+      <img class="book-side" src="https://raw.githubusercontent.com/atomic-variable/images-repo/e37f432405904a280858e5437ce1960753bc78a3/book-side.svg" alt="book-side" /> 
+    </div>
+    <div class="preface">
+      <div class="content">
+        <div class="header">
+          <div id="pretitle" class="title">Ministering Through Cliches Volume 1</div>
+          <div class="icon">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        <div class="author">by Sybil Young</div>
+        <div class="body">
+          <h6 id= "pretext">
+           Page 52: I Know You Like The Back of My Hands
+          </h6>
+		  <br>
+          <p id="prebody">
+           
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+  <div class="column">
+    <div class="card">
+      <img src="/images/mtcv2.jpg" alt="Ministering Through Cliches Volume 2" style="width:100%">
+      <div class="container">
+        <h2>Volume 2</h2>
+        <p class="title">Sybil Young</p>
+        <p>Ministering Through Cliches Volume 2</p>
+        <button class="button" onclick="previewBook(this,2)">Preview</button>
+      </div>
+    </div>
+  </div>
+<script>
+function previewBook(e, book){
+	  var display= document.getElementById("myForm");
+	   const bod= document.getElementById("prebody");
+	   bod.style.fontSize= "14px";
+	 
+	  if(book === 1){
+	   
+	   document.getElementById("pretitle").innerHTML= "Ministering Through Cliches Volume: 1";
+	   document.getElementById("pretext").innerHTML= "Page 52: I Know You Like The Back of My Hands";
+	   document.getElementById("prebody").innerHTML= "I know who you are, and I know what you are up to. There is nothing you can do to mislead me because I know you like the back of my hands. Your hands are close to you and they"+
+			" go everywhere you go. They are washed and taken care of more than any part of your body. Now! If I know that much about you, how much does our"+
+			" Heavenly Father know about us, he knows our thoughts, every hair on our head is numbered. And God is with us everywhere we go. For there is nothing that can"+
+			" be hidden from him. You see I may Know You Like The Back Of My Hands. But the man was created from God's Hands.";
+	  }
+
+	  if(book === 2){
+	    document.getElementById("pretitle").innerHTML= "Ministering Through Cliches Volume: 2";
+	   document.getElementById("pretext").innerHTML= "Page 53: Smooth Seas Do Not Make Skillful Sailors";
+	   document.getElementById("prebody").innerHTML= "It's only in the raging sea that a skillful sailor is needed. You will never learn to balance a two-wheeler on a three-wheeler bike. Don't always look for an easy way out. "
+			+"Know that the rough roads of life are there to help make you who you are meant to be. You don't move all the funiture when a toddeler is learning to walk because, that way, the child will never know they could go around it. " +
+			"And so, it is with the children of God. If we never felt pain, how would we know that God is our healer? And if we never experienced troubled times, how would we know that God is a deliverer? " +
+			"Embrace your challenges and know that God is making you into who you are meant to be.";
+	  
+	  }
+	   if(display.style.display!= "block"){
+	  display.style.display = "block";
+	   }
+	   else{
+	 
+	   display.style.display= "none";
+	   }
+	   
+	   console.log(book);
+	
+}
+</script>
+</div>
+</body>
+</html>
