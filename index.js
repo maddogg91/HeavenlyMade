@@ -7,6 +7,12 @@ const axios = require('axios');
 const search= require('./book');
 const session= require('express-session');
 const flash= require('connect-flash');
+const admin = require('firebase-admin/app');
+const {onRequest} = require("firebase-functions/v2/https");
+const logger = require("firebase-functions/logger");
+
+//admin.initializeApp();
+
 
 app.set('views', path.join(__dirname, 'templates'));
 app.engine('html', require('ejs').renderFile);
@@ -24,10 +30,6 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database(':memory:');
 
 
-const server = app.listen(7000, () => {
-  console.log(`Express running → PORT ${server.address().port}`);
-});
-
 db.serialize(() => {
     db.run("CREATE TABLE books (title TEXT)");
 
@@ -36,7 +38,6 @@ db.serialize(() => {
 	stmt.run("Ministering Through Cliches Volume 1");
 	stmt.run("Ministering Through Cliches Volume 2");
 	stmt.run("Poems of Delight: Ministering to your Soul");
-	stmt.run("Poems of Delight: To Meet Your Comfort");
     stmt.finalize();
 
     db.each("SELECT rowid AS id, title FROM books", (err, row) => {
@@ -48,7 +49,7 @@ db.serialize(() => {
 
 
 app.get('/', (req, res) => {
-  res.render('index');
+res.sendFile(path.join(__dirname, 'templates/index.html'));
 });
 
 app.get('/books', (req, res) => {
@@ -68,7 +69,7 @@ if (books.length > 0){
 	    data.push(search.findBook(t));
 	 
   });
-   res.render('results', {books: JSON.stringify(data)});
+   res.render(path.join(__dirname, 'templates/book.html'), {books: JSON.stringify(data)});
 }
 
 else{
@@ -86,6 +87,7 @@ else{
 });
 
 app.get('/ministering', (req, res) => {
-  res.render('cliches');
+  res.render(path.join(__dirname, 'templates/cliches.html'));
 });
-
+//
+ exports.cliches = onRequest(app);
