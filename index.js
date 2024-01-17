@@ -7,9 +7,9 @@ const axios = require('axios');
 const search= require('./book');
 const session= require('express-session');
 const flash= require('connect-flash');
-const admin = require('firebase-admin/app');
-const {onRequest} = require("firebase-functions/v2/https");
-const logger = require("firebase-functions/logger");
+//const admin = require('firebase-admin/app');
+//const {onRequest} = require("firebase-functions/v2/https");
+//const logger = require("firebase-functions/logger");
 
 //admin.initializeApp();
 
@@ -86,8 +86,13 @@ else{
   }
 });
 
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  
+});
+
 app.get('/ministering', (req, res) => {
   res.render(path.join(__dirname, 'templates/cliches.html'));
 });
 //
- exports.cliches = onRequest(app);
+ //exports.cliches = onRequest(app);
